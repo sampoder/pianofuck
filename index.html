@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Pianofuck</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous" />
+</head>
+
+<body class="markdown-body">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.52/Tone.js">
+  </script>
+  <div>
+    <h1>Pianofuck</h1>
+    <p>
+      You've heard about Brainfuck, well, this is Pianofuck. It's a stack-based esoteric "programming language" that could hurt your ears. 
+      To write a program, you play keys on the keyboard. Try it out on this page and watch your program execute (listen to it as well!).
+    </p>
+    <p>
+      There are two basic commands: POP and PUSH. To pop an item off the stack, play <kbd>D</kbd> on the piano. 
+      To push an item, play <kbd>C</kbd> on the piano followed by your number in binary (<kbd>D</kbd> for 0, <kbd>E</kbd> for 1). When you're finished
+      play <kbd>C</kbd> again.
+    </p>
+    <p>
+      We also have arithmetic functions. Play <kbd>E</kbd> followed by one of the following:
+      <ul>
+        <li>
+          <kbd>F</kbd>: to add the top two numbers from the stack.
+        </li>
+        <li>
+          <kbd>G</kbd>: to subtract the top two numbers from the stack.
+        </li>
+        <li>
+          <kbd>A</kbd>: to multiply the top two numbers from the stack.
+        </li>
+        <li>
+          <kbd>B</kbd>: to divide the top two numbers from the stack.
+        </li>
+        <li>
+          <kbd>C</kbd>: to absolute value the top number on the stack.
+        </li>
+        <li>
+          <kbd>D</kbd>: to duplicate the top number on the stack.
+        </li>
+        <li>
+          <kbd>E</kbd>: to perform modulo division with the top two numbers from the stack.
+        </li>
+      </ul>
+    </p>
+    <p>
+      And there's a bit of logic available. Play <kbd>F</kbd> followed by one of the following:
+      <ul>
+        <li>
+          <kbd>G</kbd>: a NOT operator. If the top number on the stack is a 0, makes it a 1. Otherwise, 0.
+        </li>
+        <li>
+          <kbd>A</kbd>: greater than with the top two numbers on the stack. 1 if true, 0 if false. 
+        </li>
+        <li>
+          <kbd>B</kbd>: less than with the top two numbers on the stack. 1 if true, 0 if false. 
+        </li>
+        <li>
+          <kbd>C</kbd>: equals with the top two numbers on the stack. 1 if true, 0 if false. 
+        </li>
+      </ul>
+    </p>
+    <p>
+      Lastly, you can output the top item from your stack by playing <kbd>G</kbd> followed by one of the following:
+      <ul>
+        <li>
+          <kbd>A</kbd>: outputs it as a number.
+        </li>
+        <li>
+          <kbd>B</kbd>: outputs it as an ASCII character. 
+        </li>
+      </ul>
+    </p>
+    <h3>Playing this Piano</h3>
+    <p>Click the <kbd>S</kbd> key to make a play the C note, then <kbd>D</kbd> to make D4 and so on up until B4 with the <kbd>K</kbd> key.</p>
+    <p>To hit a black key, use <kbd>SHIFT</kbd>.</p>
+    <p>To move up and down the piano, click <kbd>⬅︎</kbd> and <kbd>⮕</kbd>. Your current section is <kbd id="sectionNo">4</kbd></p>
+  </div>
+  <div id="piano">
+    <span class="key" id="C"><strong>C</strong></span>
+    <span class="key" id="D"><strong>D</strong></span>
+    <span class="key" id="E"><strong>E</strong></span>
+    <span class="key" id="F"><strong>F</strong></span>
+    <span class="key" id="G"><strong>G</strong></span>
+    <span class="key" id="A"><strong>A</strong></span>
+    <span class="key" id="B"><strong>B</strong></span>
+  </div>  
+  <br />
+  <pre id="output">
+    OUTPUT: <br />
+  </pre>
+  <script src="script.js"></script>
+  </body>
+</html>
