@@ -1,6 +1,8 @@
 Tone.start();
 
 let notEnoughItems = new Error("Your stack does not have enough items to perform this operation.")
+let savedA = null
+let savedB = null
 
 class Instance {
   constructor() {
@@ -48,6 +50,18 @@ class Pusher {
           this.stack.push(parseInt(this.binary, 2));
         }
         return null;
+        break;
+      case "G":
+        if (savedA) {
+          this.stack.push(savedA);
+          return null;
+        }
+        break;
+      case "F":
+        if (savedB) {
+          this.stack.push(savedB);
+          return null;
+        }
         break;
       case "D":
         this.binary += "0";
@@ -138,16 +152,33 @@ class Printer {
   }
   handleKeyInput(key) {
     switch (key) {
-      case ("A", "B"):
+      case "B":
         if (this.stack.isEmpty()) {
           throw notEnoughItems;
           break;
         }
-      case "B":
         document.getElementById("output").innerHTML += `${String.fromCharCode(this.stack.pop())} <br />`
         break;
       case "A":
+        if (this.stack.isEmpty()) {
+          throw notEnoughItems;
+          break;
+        }
         document.getElementById("output").innerHTML += `${this.stack.pop()} <br />`
+        break;
+      case "D":
+        if (this.stack.isEmpty()) {
+          throw notEnoughItems;
+          break;
+        }
+        savedB = this.stack.pop()
+        break;
+      case "C":
+        if (this.stack.isEmpty()) {
+          throw notEnoughItems;
+          break;
+        }
+        savedA = this.stack.pop()
         break;
     }
     return null;
@@ -188,31 +219,45 @@ document.onkeydown = function (e) {
   var key = e.which || e.keyCode;
   if (key === 83) {
     playNote("C", e.shiftKey);
-    instance.handleKeyInput("C");
+    if(!e.shiftKey){
+      instance.handleKeyInput("C");
+    }
   }
   if (key === 68) {
     playNote("D", e.shiftKey);
-    instance.handleKeyInput("D");
+    if(!e.shiftKey){
+      instance.handleKeyInput("D");
+    }
   }
   if (key === 70) {
     playNote("E", e.shiftKey);
-    instance.handleKeyInput("E");
+    if(!e.shiftKey){
+      instance.handleKeyInput("E");
+    }
   }
   if (key === 71) {
     playNote("F", e.shiftKey);
-    instance.handleKeyInput("F");
+    if(!e.shiftKey){
+      instance.handleKeyInput("F");
+    }
   }
   if (key === 72) {
     playNote("G", e.shiftKey);
-    instance.handleKeyInput("G");
+    if(!e.shiftKey){
+      instance.handleKeyInput("G");
+    }
   }
   if (key === 74) {
     playNote("A", e.shiftKey);
-    instance.handleKeyInput("A");
+    if(!e.shiftKey){
+      instance.handleKeyInput("A");
+    }
   }
   if (key === 75) {
     playNote("B", e.shiftKey);
-    instance.handleKeyInput("B");
+    if(!e.shiftKey){
+      instance.handleKeyInput("B");
+    }
   }
   if (key === 37) {
     if (section > 1) {
