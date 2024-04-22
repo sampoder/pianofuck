@@ -71,6 +71,6 @@
 
 Try it out https://pianofuck.sampoder.com.
 
-https://github.com/sampoder/pianofuck/assets/39828164/0860dccd-c187-404b-a346-de72b2972235
+https://github.com/sampoder/pianofuck/assets/39828164/d4c85f82-f8ea-4678-80cc-d383f2b79ce8
 
 Here's a fibonacci sequence program! It's me (aka, auto hot key) typing C, D, C, C, E, C followed by G, C, C, G, E, F, G, D, C, G, C, G, G, A, C, F a bunch of times.
